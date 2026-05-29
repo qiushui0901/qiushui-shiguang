@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: shiguang-user # 应用名称
+  profiles:
+    active: dev # 默认激活 dev 本地开发环境
+  cloud:
+    nacos:
+      discovery:
+        enabled: true # 启用服务发现
+        group: DEFAULT_GROUP # 所属组
+        namespace: shiguang # 命名空间
+        server-addr: 127.0.0.1:8848 # 指定 Nacos 配置中心的服务器地址
+    sentinel:
+      transport:
+        port: 8719 # Sentinel Server 端口
+        dashboard: 127.0.0.1:8060 # Sentinel 控制台端口
+      datasource:
+        degrade: # 自定义数据源名称（可随意命名）
+          nacos: # 数据源类型为 Nacos（Sentinel规则存储和动态配置）
+            serverAddr: http://127.0.0.1:8848 # Nacos服务器地址
+            namespace: shiguang # 命名空间
+            groupId: DEFAULT_GROUP # 所属组
+            dataId: sentinel-user # 数据 ID（Sentinel 规则的唯一标识，对应 Nacos 中配置的 Data ID）
+            ruleType: degrade # 规则类型（degrade 表示熔断规则）
+#      web-context-unify: false # 流控模式为 “链路” 时，需设置为 false, 会把每个 URL 路径视为独立的资源
+#    openfeign:
+#      lazy-attributes-resolution: true
+
+feign:
+  sentinel:
+    enabled: true # Sentinel 默认不监控 Feign, 需要手动设置为 true, 才会在 “簇点链路” 中显示资源

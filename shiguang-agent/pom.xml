@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.quanshiguang</groupId>
+        <artifactId>shiguang</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>shiguang-agent-biz</module>
+    </modules>
+
+    <artifactId>shiguang-agent</artifactId>
+    <name>${project.artifactId}</name>
+    <description>AI Agent 服务（多 Agent 协作：内容理解 + 内容审核 + 创作助手 + 编排层）</description>
+
+</project>

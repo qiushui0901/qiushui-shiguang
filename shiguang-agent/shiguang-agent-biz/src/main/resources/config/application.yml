@@ -1,0 +1,51 @@
+server:
+  port: 8094
+
+spring:
+  profiles:
+    active: dev
+
+  ai:
+    openai:
+      base-url: https://open.bigmodel.cn/api/paas
+      api-key: ${ZHIPU_API_KEY:your-api-key-here}
+      chat:
+        options:
+          model: glm-4-flash
+          temperature: 0.7
+          max-tokens: 2048
+
+agent:
+  model:
+    understanding:
+      base-url: https://open.bigmodel.cn/api/paas
+      api-key: ${ZHIPU_API_KEY:your-api-key-here}
+      model: glm-4-flash
+      temperature: 0.3
+      max-tokens: 2048
+    moderation:
+      base-url: https://open.bigmodel.cn/api/paas
+      api-key: ${ZHIPU_API_KEY:your-api-key-here}
+      model: glm-4-flash
+      temperature: 0.1
+      max-tokens: 1024
+    creative:
+      base-url: https://open.bigmodel.cn/api/paas
+      api-key: ${ZHIPU_API_KEY:your-api-key-here}
+      model: glm-4
+      temperature: 0.8
+      max-tokens: 4096
+    search:
+      base-url: https://open.bigmodel.cn/api/paas
+      api-key: ${ZHIPU_API_KEY:your-api-key-here}
+      model: glm-4-flash
+      temperature: 0.5
+      max-tokens: 2048
+
+  orchestrator:
+    thread-pool:
+      core-size: 4
+      max-size: 8
+      queue-capacity: 100
+      keep-alive-seconds: 60
+      rejected-handler: caller-runs

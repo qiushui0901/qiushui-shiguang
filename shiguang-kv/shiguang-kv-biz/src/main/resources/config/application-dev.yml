@@ -1,0 +1,16 @@
+spring:
+  cassandra:
+    keyspace-name: shiguang
+    contact-points: localhost
+    port: 9042
+#    schema-action: none
+
+rocketmq:
+  name-server: 127.0.0.1:9876 # name server 地址
+  consumer:
+    group: shiguang_group
+    pull-batch-size: 5 # 每次拉取的最大消息数
+
+
+
+

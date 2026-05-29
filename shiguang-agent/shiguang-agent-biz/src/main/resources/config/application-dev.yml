@@ -1,0 +1,25 @@
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8719
+      eager: true
+
+elasticsearch:
+  address: 127.0.0.1:9200
+
+logging:
+  level:
+    org.springframework.ai: debug
